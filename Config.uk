@@ -1,0 +1,10 @@
+menuconfig LIBFPING
+	bool "fping Unikraft library"
+	default n
+
+if LIBFPING
+config LIBFPING_MAIN_FUNCTION
+	bool "Provide main function"
+	default n
+
+endif
