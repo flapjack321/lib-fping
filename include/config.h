@@ -23,7 +23,7 @@
 #define HAVE_NETINET_ICMP6_H 1
 
 /* SO_TIMESTAMPNS is defined */
-#define HAVE_SO_TIMESTAMPNS 1
+// #define HAVE_SO_TIMESTAMPNS 1
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
@@ -56,7 +56,7 @@
 #define IPV4 1
 
 /* IPv6 enabled */
-#define IPV6 1
+// #define IPV6 1
 
 /* Name of package */
 #define PACKAGE "fping"
