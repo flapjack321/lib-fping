@@ -49,7 +49,7 @@ $(eval $(call fetch,libfping,$(LIBFPING_URL)))
 ################################################################################
 # Helpers
 ################################################################################
-LIBFPING_SRC = $(LIBFPING_ORIGIN)/$(LIBFPING_SUBDIR)
+LIBFPING_SRC = $(LIBFPING_ORIGIN)/$(LIBFPING_SUBDIR)/src
 
 ################################################################################
 # Library includes
@@ -78,4 +78,4 @@ LIBFPINGSRCS-$(CONFIG_LIBFPING_MAIN_FUNCTION) += $(LIBFPING_BASE)/main.c|unikraf
 ################################################################################
 # Library sources
 ################################################################################
-# LIBFPING_SRCS-y += # Include source files here
+LIBFPING_SRCS-y += $(LIBFPING_SRC)/fping.c
