@@ -1,0 +1,24 @@
+From f84887c75f483faa5cc8f92f95e2a512c325be94 Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 26 Apr 2021 15:12:07 +0100
+Subject: [PATCH] src/fping.c: fixed typo in sent_icmp
+
+---
+ src/fping.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fping.c b/src/fping.c
+index a2f1275..b8b176f 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -2130,7 +2130,7 @@ int decode_icmp_ipv4(
+             return -1;
+         }
+
+-        seqmap_value = seqmap_fetch(ntohs(sent_icmp->icmp_seq), current_time_ns);
++        seqmap_value = seqmap_fetch(ntohs(sent_icmp->seqno), current_time_ns);
+         if (seqmap_value == NULL) {
+             return -1;
+         }
+--
+2.25.1

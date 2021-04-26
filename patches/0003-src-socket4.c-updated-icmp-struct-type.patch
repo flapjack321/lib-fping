@@ -1,0 +1,53 @@
+From d82f464a6db7b0eff71418ad1c792a7b216c6b8c Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 26 Apr 2021 12:57:23 +0100
+Subject: [PATCH] src/socket4.c: updated icmp struct type
+
+---
+ src/socket4.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/socket4.c b/src/socket4.c
+index d96ddb4..86d7d71 100644
+--- a/src/socket4.c
++++ b/src/socket4.c
+@@ -131,24 +131,24 @@ unsigned short calcsum(unsigned short* buffer, int length)
+
+ int socket_sendto_ping_ipv4(int s, struct sockaddr* saddr, socklen_t saddr_len, uint16_t icmp_seq_nr, uint16_t icmp_id_nr)
+ {
+-    struct icmp* icp;
++    struct icmp_echo_hdr* icp;
+     int n;
+
+-    icp = (struct icmp*)ping_buffer_ipv4;
++    icp = (struct icmp_echo_hdr*)ping_buffer_ipv4;
+
+-    icp->icmp_type = ICMP_ECHO;
+-    icp->icmp_code = 0;
+-    icp->icmp_cksum = 0;
+-    icp->icmp_seq = htons(icmp_seq_nr);
+-    icp->icmp_id = icmp_id_nr;
++    icp->type = ICMP_ECHO;
++    icp->code = 0;
++    icp->chksum = 0;
++    icp->seqno = htons(icmp_seq_nr);
++    icp->id = icmp_id_nr;
+
+-    if (random_data_flag) {
+-        for (n = ((char*)&icp->icmp_data - (char*)icp); n < ping_pkt_size_ipv4; ++n) {
+-            ping_buffer_ipv4[n] = random() & 0xFF;
+-        }
+-    }
++//    if (random_data_flag) {
++//        for (n = ((char*)&icp->icmp_data - (char*)icp); n < ping_pkt_size_ipv4; ++n) {
++//            ping_buffer_ipv4[n] = random() & 0xFF;
++//        }
++//    }
+
+-    icp->icmp_cksum = calcsum((unsigned short*)icp, ping_pkt_size_ipv4);
++    icp->chksum = calcsum((unsigned short*)icp, ping_pkt_size_ipv4);
+
+     n = sendto(s, icp, ping_pkt_size_ipv4, 0, saddr, saddr_len);
+
+--
+2.25.1

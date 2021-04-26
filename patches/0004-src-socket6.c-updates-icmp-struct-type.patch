@@ -1,0 +1,50 @@
+From f04196a8c9bfb59420eba1fc49eca31cbb7e63ed Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 26 Apr 2021 13:17:10 +0100
+Subject: [PATCH] src/socket6.c: updated icmp struct type
+
+---
+ src/socket6.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/socket6.c b/src/socket6.c
+index a8fdcfb..1498982 100644
+--- a/src/socket6.c
++++ b/src/socket6.c
+@@ -113,22 +113,22 @@ void socket_set_src_addr_ipv6(int s, struct in6_addr* src_addr, int *ident)
+
+ int socket_sendto_ping_ipv6(int s, struct sockaddr* saddr, socklen_t saddr_len, uint16_t icmp_seq_nr, uint16_t icmp_id_nr)
+ {
+-    struct icmp6_hdr* icp;
++    struct icmp6_echo_hdr* icp;
+     int n;
+
+-    icp = (struct icmp6_hdr*)ping_buffer_ipv6;
+-    icp->icmp6_type = ICMP6_ECHO_REQUEST;
+-    icp->icmp6_code = 0;
+-    icp->icmp6_seq = htons(icmp_seq_nr);
+-    icp->icmp6_id = icmp_id_nr;
++    icp = (struct icmp6_echo_hdr*)ping_buffer_ipv6;
++    icp->type = ICMP6_TYPE_EREQ;
++    icp->code = 0;
++    icp->seqno = htons(icmp_seq_nr);
++    icp->id = icmp_id_nr;
+
+-    if (random_data_flag) {
+-        for (n = sizeof(struct icmp6_hdr); n < ping_pkt_size_ipv6; ++n) {
+-            ping_buffer_ipv6[n] = random() & 0xFF;
+-        }
+-    }
++//    if (random_data_flag) {
++//        for (n = sizeof(struct icmp6_hdr); n < ping_pkt_size_ipv6; ++n) {
++//            ping_buffer_ipv6[n] = random() & 0xFF;
++//        }
++//    }
+
+-    icp->icmp6_cksum = 0; /* The IPv6 stack calculates the checksum for us... */
++    icp->chksum = 0; /* The IPv6 stack calculates the checksum for us... */
+
+     n = sendto(s, icp, ping_pkt_size_ipv6, 0, saddr, saddr_len);
+
+--
+2.25.1
