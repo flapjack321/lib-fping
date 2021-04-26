@@ -1,0 +1,40 @@
+From 216f10d496dfd83f891312cc8cd9c921da1573dd Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 26 Apr 2021 11:48:03 +0100
+Subject: [PATCH] src/socket*: headers use lwip
+
+---
+ src/socket4.c | 4 ++--
+ src/socket6.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/socket4.c b/src/socket4.c
+index d7c4ae3..d96ddb4 100644
+--- a/src/socket4.c
++++ b/src/socket4.c
+@@ -37,8 +37,8 @@
+ #include <netdb.h>
+ #include <netinet/in.h>
+ #include <netinet/in_systm.h>
+-#include <netinet/ip.h>
+-#include <netinet/ip_icmp.h>
++#include <lwip/ip.h>
++#include <lwip/prot/icmp.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/src/socket6.c b/src/socket6.c
+index 9ba42a3..a8fdcfb 100644
+--- a/src/socket6.c
++++ b/src/socket6.c
+@@ -41,7 +41,7 @@
+ #include <string.h>
+ #include <sys/socket.h>
+
+-#include <netinet/icmp6.h>
++#include <lwip/prot/icmp6.h>
+
+ char* ping_buffer_ipv6 = 0;
+ size_t ping_pkt_size_ipv6;
+-- 
+2.25.1
