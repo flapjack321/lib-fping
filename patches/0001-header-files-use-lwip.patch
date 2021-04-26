@@ -1,0 +1,34 @@
+From 1b90831ccdc63635d1f9d353c0328c8a3ee7eb06 Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 26 Apr 2021 11:14:52 +0100
+Subject: [PATCH] src/fping.c: headers files use lwip
+
+---
+ src/fping.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+diff --git a/src/fping.c b/src/fping.c
+index c392fae..532fa1c 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -71,12 +71,12 @@ extern "C" {
+ #endif /* HAVE_SYS_FILE_H */
+
+ #ifdef IPV6
+-#include <netinet/icmp6.h>
++#include <lwip/prot/icmp6.h>
+ #endif
+ #include <netinet/in_systm.h>
+
+-#include <netinet/ip.h>
+-#include <netinet/ip_icmp.h>
++#include <lwip/ip.h>
++#include <lwip/prot/icmp.h>
+
+ #include <arpa/inet.h>
+ #include <ctype.h>
+-- 
+2.25.1
+
+
+
+
