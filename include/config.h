@@ -56,7 +56,7 @@
 #define IPV4 1
 
 /* IPv6 enabled */
-// #define IPV6 1
+#define IPV6 1
 
 /* Name of package */
 #define PACKAGE "fping"
@@ -124,9 +124,11 @@
 /* #undef _POSIX_SOURCE */
 
 /* some OSes do not define this ... lets take a wild guess */
-#ifndef INADDR_NONE
-#  define INADDR_NONE 0xffffffffU
-#endif
+// #ifndef INADDR_NONE
+// #  define INADDR_NONE 0xffffffffU
+// #endif
+
+#define ICMP_MINLEN 8
 
 #endif /* CONFIG_H */
 
