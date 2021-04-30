@@ -24,6 +24,7 @@
 
 /* SO_TIMESTAMPNS is defined */
 // #define HAVE_SO_TIMESTAMPNS 1
+#undef HAVE_SO_TIMESTAMPNS
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
@@ -129,6 +130,9 @@
 // #endif
 
 #define ICMP_MINLEN 8
+
+#define CLOCKID CLOCK_REALTIME
+#define DEBUG 1
 
 #endif /* CONFIG_H */
 
