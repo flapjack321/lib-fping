@@ -1,0 +1,24 @@
+From b4f153324f3dba135feef4d0cd884ce5c9385b0d Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 3 May 2021 16:41:06 +0100
+Subject: [PATCH] src/fping.c: fixed incorrect ip header length
+
+---
+ src/fping.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fping.c b/src/fping.c
+index f12faba..5e8bb4a 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -2101,7 +2101,7 @@ int decode_icmp_ipv4(
+          */
+         hlen = (ip->_v_hl & 0x0F) << 2;
+ #else
+-        hlen = ip->_v_hl << 2;
++        hlen = (ip->_v_hl & 0x0F) << 2;
+ #endif
+     }
+ 
+-- 
+2.25.1
