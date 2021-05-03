@@ -7,4 +7,8 @@ config LIBFPING_MAIN_FUNCTION
 	bool "Provide main function"
 	default n
 
+config FPING_DEBUG
+	bool "Enable debug mode"
+	default n
+
 endif

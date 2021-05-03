@@ -23,7 +23,7 @@
 #define HAVE_NETINET_ICMP6_H 1
 
 /* SO_TIMESTAMPNS is defined */
-// #define HAVE_SO_TIMESTAMPNS 1
+//#define HAVE_SO_TIMESTAMPNS 1
 #undef HAVE_SO_TIMESTAMPNS
 
 /* Define to 1 if you have the <stdint.h> header file. */
@@ -131,8 +131,11 @@
 
 #define ICMP_MINLEN 8
 
-#define CLOCKID CLOCK_REALTIME
+#if FPING_DEBUG
 #define DEBUG 1
+#else
+#undef DEUBG
+#endif
 
 #endif /* CONFIG_H */
 
