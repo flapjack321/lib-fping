@@ -1,0 +1,27 @@
+From c84c944c501252140efe109f7eb7064ee8a731c4 Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Fri, 30 Apr 2021 12:01:07 +0100
+Subject: [PATCH] src/fping.c: debug messages
+
+---
+ src/fping.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/fping.c b/src/fping.c
+index 1371e4c..722d83a 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -1501,6 +1501,11 @@ void update_current_time()
+ {
+     clock_gettime(CLOCKID, &current_time);
+     current_time_ns = timespec_ns(&current_time);
++
++#if defined(DEBUG) || defined(_DEBUG)
++    fprintf(stderr, "Updating current time to: ");
++    fprintf(stderr, "%" PRId64 "\n", current_time_ns);
++#endif
+ }
+ 
+ 
+-- 
+2.25.1
