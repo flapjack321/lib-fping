@@ -59,10 +59,10 @@ CINCLUDES-y += -I$(LIBFPING_BASE)/include
 ################################################################################
 # Flags
 ################################################################################
-LIBFPING_FLAGS =
+LIBFPING_FLAGS = -DDEBUG
 
 # Suppress some warnings to make the build process look neater
-LIBFPING_FLAGS_SUPPRESS =
+LIBFPING_FLAGS_SUPPRESS = -Wsign-compare
 
 LIBFPING_CFLAGS-y += $(LIBFPING_FLAGS)
 LIBFPING_CFLAGS-y += $(LIBFPING_FLAGS_SUPPRESS)
@@ -78,8 +78,8 @@ LIBFPINGSRCS-$(CONFIG_LIBFPING_MAIN_FUNCTION) += $(LIBFPING_BASE)/main.c|unikraf
 ################################################################################
 # Library sources
 ################################################################################
-LIBFPING_SRCS-y += $(LIBFPING_SRC)/optparse.c
 LIBFPING_SRCS-y += $(LIBFPING_SRC)/seqmap.c
 LIBFPING_SRCS-y += $(LIBFPING_SRC)/socket4.c
 LIBFPING_SRCS-y += $(LIBFPING_SRC)/socket6.c
+LIBFPING_SRCS-y += $(LIBFPING_SRC)/optparse.c
 LIBFPING_SRCS-y += $(LIBFPING_SRC)/fping.c
