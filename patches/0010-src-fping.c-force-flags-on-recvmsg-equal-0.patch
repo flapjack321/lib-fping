@@ -1,0 +1,27 @@
+From 3de3a9b090feec4de1a531a9a0f1e60e1e1a4d9f Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 3 May 2021 16:24:57 +0100
+Subject: [PATCH] src/fping.c: force flags on recvmsg equal 0
+
+---
+ src/fping.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/fping.c b/src/fping.c
+index fc04769..f12faba 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -1982,7 +1982,10 @@ int receive_packet(int64_t wait_time,
+         return 0; /* timeout */
+     }
+ 
+-    recv_len = recvmsg(s, &recv_msghdr, MSG_TRUNC);
++// MSG_TRUNC(0x04) == MSG_OOB(0x04)
++// MSG_OOB is an unsupported option and so fails the assertion check
++//    recv_len = recvmsg(s, &recv_msghdr, MSG_TRUNC);
++    recv_len = recvmsg(s, &recv_msghdr, 0);
+     if (recv_len <= 0) {
+         return 0;
+     }
+-- 
+2.25.1
