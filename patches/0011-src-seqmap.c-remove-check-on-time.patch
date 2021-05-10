@@ -1,0 +1,32 @@
+From 386db74a940394c72fd7357a3bcbb597e7e22f68 Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 3 May 2021 17:57:58 +0100
+Subject: [PATCH] src/seqmap.c: remove check on time
+
+---
+ src/seqmap.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/seqmap.c b/src/seqmap.c
+index a1ecdef..13cb7b3 100644
+--- a/src/seqmap.c
++++ b/src/seqmap.c
+@@ -80,11 +80,11 @@ unsigned int seqmap_add(unsigned int host_nr, unsigned int ping_count, int64_t t
+     /* check if expired (note that unused seqmap values will have fields set to
+      * 0, so will be seen as expired */
+     next_value = &seqmap_map[seqmap_next_id];
+-    if (timestamp - next_value->ping_ts < SEQMAP_TIMEOUT_IN_NS) {
+-        fprintf(stderr, "fping error: not enough sequence numbers available! (expire_timeout=%ld, host_nr=%d, ping_count=%d, seqmap_next_id=%d)\n",
+-            SEQMAP_TIMEOUT_IN_NS, host_nr, ping_count, seqmap_next_id);
+-        exit(4);
+-    }
++//    if (timestamp - next_value->ping_ts < SEQMAP_TIMEOUT_IN_NS) {
++//        fprintf(stderr, "fping error: not enough sequence numbers available! (expire_timeout=%ld, host_nr=%d, ping_count=%d, seqmap_next_id=%d)\n",
++//            SEQMAP_TIMEOUT_IN_NS, host_nr, ping_count, seqmap_next_id);
++//        exit(4);
++//    }
+ 
+     /* store the value */
+     next_value->host_nr = host_nr;
+-- 
+2.25.1
