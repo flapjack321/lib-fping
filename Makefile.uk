@@ -55,11 +55,12 @@ LIBFPING_SRC = $(LIBFPING_ORIGIN)/$(LIBFPING_SUBDIR)/src
 # Library includes
 ################################################################################
 CINCLUDES-y += -I$(LIBFPING_BASE)/include
+LIBFPING_CINCLUDES-y += -I$(LIBFPING_BASE)/include-internal
 
 ################################################################################
 # Flags
 ################################################################################
-LIBFPING_FLAGS = -DDEBUG
+LIBFPING_FLAGS =
 
 # Suppress some warnings to make the build process look neater
 LIBFPING_FLAGS_SUPPRESS = -Wsign-compare
@@ -67,13 +68,15 @@ LIBFPING_FLAGS_SUPPRESS = -Wsign-compare
 LIBFPING_CFLAGS-y += $(LIBFPING_FLAGS)
 LIBFPING_CFLAGS-y += $(LIBFPING_FLAGS_SUPPRESS)
 
+LIBFPING_FPING_FLAGS += -Dmain=fping_main
+
 ################################################################################
 # Glue code
 ################################################################################
 # Include paths
 # LIBFPING_CINCLUDES-y   += $(LIBFPING_COMMON_INCLUDES-y)
 # LIBFPING_CXXINCLUDES-y += $(LIBFPING_COMMON_INCLUDES-y)
-LIBFPINGSRCS-$(CONFIG_LIBFPING_MAIN_FUNCTION) += $(LIBFPING_BASE)/main.c|unikraft
+LIBFPING_SRCS-$(CONFIG_LIBFPING_MAIN_FUNCTION) += $(LIBFPING_BASE)/main.c|unikraft
 
 ################################################################################
 # Library sources
