@@ -7,6 +7,16 @@ config LIBFPING_MAIN_FUNCTION
 	bool "Provide main function"
 	default n
 
+menuconfig FPING_UKSTORE_SUPPORT
+	bool "Register ukstore getters"
+	default n
+
+if FPING_UKSTORE_SUPPORT
+	config FPING_UKSTORE_SUPPORT_DEBUG
+		bool "Enable debug information on ukstore getters"
+		default n
+endif
+
 config FPING_DEBUG
 	bool "Enable debug mode"
 	default n
