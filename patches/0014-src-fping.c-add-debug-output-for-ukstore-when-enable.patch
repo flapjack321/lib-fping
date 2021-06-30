@@ -1,0 +1,56 @@
+From 975a3fedf538e1457e7df3b44f4b259a64891d82 Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Wed, 30 Jun 2021 15:03:33 +0100
+Subject: [PATCH 14/14] src/fping.c: add debug output for ukstore when enabled
+
+---
+ src/fping.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/src/fping.c b/src/fping.c
+index 99fb91e..0f24015 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -1208,6 +1208,39 @@ int main(int argc, char** argv)
+     /* main loop */
+     main_loop();
+ 
++#ifdef CONFIG_FPING_UKSTORE_SUPPORT_DEBUG
++    int64_t storage;
++    int ukret;
++    struct uk_store_entry *my_entry;
++
++    fprintf(stderr, "DEBUG: attempting to use uk_store_get_entry(libfping, NULL, `fping_latest')\n");
++    my_entry = uk_store_get_entry(libfping, NULL, "fping_latest");
++    fprintf(stderr, "DEBUG: attempting to use uk_store_get_value(%p, ...)\n", my_entry);
++    ukret = uk_store_get_value(my_entry, s64, &storage);
++    if (ukret == 0)
++      fprintf(stderr, "DEBUG: used ukstore to get last latency entry => %"PRId64"\n", storage);
++    else
++      fprintf(stderr, "DEBUG: ukstore returned non-zero code (%d). failed\n", ukret);
++
++    fprintf(stderr, "DEBUG: attempting to use uk_store_get_entry(libfping, NULL, `fping_minimum')\n");
++    my_entry = uk_store_get_entry(libfping, NULL, "fping_minimum");
++    fprintf(stderr, "DEBUG: attempting to use uk_store_get_value(%p, ...)\n", my_entry);
++    ukret = uk_store_get_value(my_entry, s64, &storage);
++    if (ukret == 0)
++      fprintf(stderr, "DEBUG: used ukstore to get minimum entry => %"PRId64"\n", storage);
++    else
++      fprintf(stderr, "DEBUG: ukstore returned non-zero code (%d). failed\n", ukret);
++
++    fprintf(stderr, "DEBUG: attempting to use uk_store_get_entry(libfping, NULL, `fping_maximum')\n");
++    my_entry = uk_store_get_entry(libfping, NULL, "fping_maximum");
++    fprintf(stderr, "DEBUG: attempting to use uk_store_get_value(%p, ...)\n", my_entry);
++    ukret = uk_store_get_value(my_entry, s64, &storage);
++    if (ukret == 0)
++      fprintf(stderr, "DEBUG: used ukstore to get maximum entry => %"PRId64"\n", storage);
++    else
++      fprintf(stderr, "DEBUG: ukstore returned non-zero code (%d). failed\n", ukret);
++#endif
++
+     finish();
+ 
+     return 0;
+-- 
+2.25.1
+

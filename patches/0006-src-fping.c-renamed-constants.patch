@@ -1,0 +1,25 @@
+From b064cc41cb415debb98f50886dccd60593995ca2 Mon Sep 17 00:00:00 2001
+From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
+Date: Mon, 26 Apr 2021 14:20:59 +0100
+Subject: [PATCH 06/14] src/fping.c: renamed constants
+
+---
+ src/fping.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fping.c b/src/fping.c
+index 83fb63f..36df898 100644
+--- a/src/fping.c
++++ b/src/fping.c
+@@ -2159,7 +2159,7 @@ int decode_icmp_ipv6(
+ 
+     icp = (struct icmp6_hdr*)reply_buf;
+ 
+-    if (icp->icmp6_type != ICMP6_ECHO_REPLY) {
++    if (icp->icmp6_type != ICMP6_TYPE_EREP) {
+         /* Handle other ICMP packets */
+         struct icmp6_hdr* sent_icmp;
+         SEQMAP_VALUE* seqmap_value;
+-- 
+2.25.1
+

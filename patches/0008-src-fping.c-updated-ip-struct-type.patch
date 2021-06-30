@@ -1,23 +1,23 @@
-From e904bd9cc2bcf98d2b30e618140973cb5f651b88 Mon Sep 17 00:00:00 2001
+From 9408f56f5cd75d32aef4a4a18250ed93e1e1b875 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 15:01:41 +0100
-Subject: [PATCH] src/fping.c: updated ip struct type
+Subject: [PATCH 08/14] src/fping.c: updated ip struct type
 
 ---
  src/fping.c | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/src/fping.c b/src/fping.c
-index 1dff9d5..a2f1275 100644
+index cbbd40b..644a20f 100644
 --- a/src/fping.c
 +++ b/src/fping.c
-@@ -2084,16 +2084,16 @@ int decode_icmp_ipv4(
+@@ -2041,16 +2041,16 @@ int decode_icmp_ipv4(
      int hlen = 0;
-
+ 
      if (!using_sock_dgram4) {
 -        struct ip* ip = (struct ip*)reply_buf;
 +        struct ip_hdr* ip = (struct ip_hdr*)reply_buf;
-
+ 
  #if defined(__alpha__) && __STDC__ && !defined(__GLIBC__)
          /* The alpha headers are decidedly broken.
           * Using an ANSI compiler, it provides ip_vhl instead of ip_hl and
@@ -30,36 +30,37 @@ index 1dff9d5..a2f1275 100644
 +        hlen = ip->_v_hl << 2;
  #endif
      }
-
-@@ -2118,12 +2118,12 @@ int decode_icmp_ipv4(
+ 
+@@ -2075,12 +2075,12 @@ int decode_icmp_ipv4(
          HOST_ENTRY* h;
-
+ 
          /* reply icmp packet (hlen + ICMP_MINLEN) followed by "sent packet" (ip + icmp headers) */
 -        if (reply_buf_len < hlen + ICMP_MINLEN + sizeof(struct ip) + ICMP_MINLEN) {
 +        if (reply_buf_len < hlen + ICMP_MINLEN + sizeof(struct ip_hdr) + ICMP_MINLEN) {
              /* discard ICMP message if we can't tell that it was caused by us (i.e. if the "sent packet" is not included). */
              return -1;
          }
-
+ 
 -        sent_icmp = (struct icmp_echo_hdr*)(reply_buf + hlen + ICMP_MINLEN + sizeof(struct ip));
 +        sent_icmp = (struct icmp_echo_hdr*)(reply_buf + hlen + ICMP_MINLEN + sizeof(struct ip_hdr));
-
+ 
          if (sent_icmp->type != ICMP_ECHO || sent_icmp->id != ident4) {
              /* not caused by us */
-@@ -2210,12 +2210,12 @@ int decode_icmp_ipv6(
+@@ -2167,12 +2167,12 @@ int decode_icmp_ipv6(
          HOST_ENTRY* h;
-
+ 
          /* reply icmp packet (ICMP_MINLEN) followed by "sent packet" (ip + icmp headers) */
 -        if (reply_buf_len < ICMP_MINLEN + sizeof(struct ip) + ICMP_MINLEN) {
 +        if (reply_buf_len < ICMP_MINLEN + sizeof(struct ip_hdr) + ICMP_MINLEN) {
              /* discard ICMP message if we can't tell that it was caused by us (i.e. if the "sent packet" is not included). */
              return 0;
          }
-
+ 
 -        sent_icmp = (struct icmp6_hdr*)(reply_buf + sizeof(struct icmp6_hdr) + sizeof(struct ip));
 +        sent_icmp = (struct icmp6_hdr*)(reply_buf + sizeof(struct icmp6_hdr) + sizeof(struct ip_hdr));
-
+ 
          if (sent_icmp->icmp6_type != ICMP_ECHO || sent_icmp->icmp6_id != ident6) {
              /* not caused by us */
---
+-- 
 2.25.1
+

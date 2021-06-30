@@ -1,7 +1,7 @@
-From 216f10d496dfd83f891312cc8cd9c921da1573dd Mon Sep 17 00:00:00 2001
+From 538b803e8352e45385be755c053950a89d6d9063 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 11:48:03 +0100
-Subject: [PATCH] src/socket*: headers use lwip
+Subject: [PATCH 02/14] src/socket*: headers use lwip
 
 ---
  src/socket4.c | 4 ++--
@@ -30,11 +30,12 @@ index 9ba42a3..a8fdcfb 100644
 @@ -41,7 +41,7 @@
  #include <string.h>
  #include <sys/socket.h>
-
+ 
 -#include <netinet/icmp6.h>
 +#include <lwip/prot/icmp6.h>
-
+ 
  char* ping_buffer_ipv6 = 0;
  size_t ping_pkt_size_ipv6;
 -- 
 2.25.1
+

@@ -1,17 +1,17 @@
-From 3de3a9b090feec4de1a531a9a0f1e60e1e1a4d9f Mon Sep 17 00:00:00 2001
+From bd7d4f97568dbf6181eef2b81d1c0d1dcf29fe0e Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 3 May 2021 16:24:57 +0100
-Subject: [PATCH] src/fping.c: force flags on recvmsg equal 0
+Subject: [PATCH 10/14] src/fping.c: force flags on recvmsg equal 0
 
 ---
  src/fping.c | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/src/fping.c b/src/fping.c
-index fc04769..f12faba 100644
+index f4c22b6..f434573 100644
 --- a/src/fping.c
 +++ b/src/fping.c
-@@ -1982,7 +1982,10 @@ int receive_packet(int64_t wait_time,
+@@ -1934,7 +1934,10 @@ int receive_packet(int64_t wait_time,
          return 0; /* timeout */
      }
  
@@ -25,3 +25,4 @@ index fc04769..f12faba 100644
      }
 -- 
 2.25.1
+
