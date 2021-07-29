@@ -1,7 +1,7 @@
 From fb3eb80bd91e2a8107a5d9542c2a6ac1bde6349f Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 15:12:07 +0100
-Subject: [PATCH 09/14] src/fping.c: fixed typo in sent_icmp
+Subject: [PATCH 09/15] src/fping.c: fixed typo in sent_icmp
 
 ---
  src/fping.c | 2 +-
@@ -21,5 +21,5 @@ index 644a20f..f4c22b6 100644
              return -1;
          }
 -- 
-2.25.1
+2.30.2
 

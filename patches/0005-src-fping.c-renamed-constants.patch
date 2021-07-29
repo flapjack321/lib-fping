@@ -1,7 +1,7 @@
 From 49d46f7a1b1927de3bee594a577afda966498ce9 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 14:07:44 +0100
-Subject: [PATCH 05/14] src/fping.c: renamed constants
+Subject: [PATCH 05/15] src/fping.c: renamed constants
 
 ---
  src/fping.c | 22 +++++++++++-----------
@@ -69,5 +69,5 @@ index 43a315d..83fb63f 100644
              if (icp->icmp6_type <= ICMP_TYPE_STR_MAX) {
                  print_warning("%s from %s for ICMP Echo sent to %s",
 -- 
-2.25.1
+2.30.2
 

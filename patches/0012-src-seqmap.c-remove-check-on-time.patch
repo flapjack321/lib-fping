@@ -1,7 +1,7 @@
 From 9265bafa45678a62485de6a945110821a0298b05 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 3 May 2021 17:57:58 +0100
-Subject: [PATCH 12/14] src/seqmap.c: remove check on time
+Subject: [PATCH 12/15] src/seqmap.c: remove check on time
 
 ---
  src/seqmap.c | 10 +++++-----
@@ -29,5 +29,5 @@ index a1ecdef..13cb7b3 100644
      /* store the value */
      next_value->host_nr = host_nr;
 -- 
-2.25.1
+2.30.2
 

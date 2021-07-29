@@ -1,7 +1,7 @@
 From 9408f56f5cd75d32aef4a4a18250ed93e1e1b875 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 15:01:41 +0100
-Subject: [PATCH 08/14] src/fping.c: updated ip struct type
+Subject: [PATCH 08/15] src/fping.c: updated ip struct type
 
 ---
  src/fping.c | 14 +++++++-------
@@ -62,5 +62,5 @@ index cbbd40b..644a20f 100644
          if (sent_icmp->icmp6_type != ICMP_ECHO || sent_icmp->icmp6_id != ident6) {
              /* not caused by us */
 -- 
-2.25.1
+2.30.2
 
