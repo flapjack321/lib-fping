@@ -24,6 +24,20 @@ menuconfig FPING_PROMETHEUS_SUPPORT
 	select FPING_UKSTORE_SUPPORT
 	select LIBPROMETHEUS
 
+if FPING_PROMETHEUS_SUPPORT
+	config FPING_PROMETHEUS_SUPPORT_LATEST
+		bool "Enable latest ping value metric"
+		default y
+	
+	config FPING_PROMETHEUS_SUPPORT_MIN
+		bool "Enable minimum ping value metric"
+		default y
+	
+	config FPING_PROMETHEUS_SUPPORT_MAX
+		bool "Enable maximum ping value metric"
+		default y
+endif
+
 config FPING_DEBUG
 	bool "Enable debug mode"
 	default n
