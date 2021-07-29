@@ -10,12 +10,19 @@ config LIBFPING_MAIN_FUNCTION
 menuconfig FPING_UKSTORE_SUPPORT
 	bool "Register ukstore getters"
 	default n
+	select LIBUKSTORE
 
 if FPING_UKSTORE_SUPPORT
 	config FPING_UKSTORE_SUPPORT_DEBUG
 		bool "Enable debug information on ukstore getters"
 		default n
 endif
+
+menuconfig FPING_PROMETHEUS_SUPPORT
+	bool "Enable Prometheus metrics server"
+	default n
+	select FPING_UKSTORE_SUPPORT
+	select LIBPROMETHEUS
 
 config FPING_DEBUG
 	bool "Enable debug mode"

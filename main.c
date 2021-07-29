@@ -30,9 +30,38 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+#include <stdio.h>
+#include <uk/config.h>
+
+#ifdef CONFIG_FPING_PROMETHEUS_SUPPORT
+# include <uk/prom_glue.h>
+#endif
 
 int main(int argc, char *argv[])
 {
-	// TODO: Replace with main
-	return fping_main(argc, argv);
+	int ret;
+
+#ifdef CONFIG_FPING_PROMETHEUS_SUPPORT
+	ret = uk_prom_init();
+	if (ret) {
+		fprintf(stderr, "Failed to initialize lib-prometheus. Exiting with code %d\n", ret);
+		return ret;
+	}
+#endif
+	
+	ret = fping_main(argc, argv);
+	if (ret) {
+		fprintf(stderr, "fping main function failed. Exiting with code %d\n", ret);
+		return ret;
+	}
+
+#ifdef CONFIG_FPING_PROMETHEUS_SUPPORT
+	ret = uk_prom_clean();
+	if (ret) {
+		fprintf(stderr, "Failed on lib-prometheus cleanup. Exiting with code %d\n", ret);
+		return ret;
+	}
+#endif
+
+	return 0;
 }
