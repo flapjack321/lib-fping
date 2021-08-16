@@ -1,7 +1,7 @@
 From 3be10a7e0e56fac8b47997009be0998bec3e0eda Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 11:14:52 +0100
-Subject: [PATCH 01/15] src/fping.c: headers files use lwip
+Subject: [PATCH 01/16] src/fping.c: headers files use lwip
 
 ---
  src/fping.c | 6 +++---

@@ -1,7 +1,7 @@
 From bd7d4f97568dbf6181eef2b81d1c0d1dcf29fe0e Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 3 May 2021 16:24:57 +0100
-Subject: [PATCH 10/15] src/fping.c: force flags on recvmsg equal 0
+Subject: [PATCH 10/16] src/fping.c: force flags on recvmsg equal 0
 
 ---
  src/fping.c | 5 ++++-

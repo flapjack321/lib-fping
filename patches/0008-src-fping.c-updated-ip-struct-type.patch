@@ -1,7 +1,7 @@
 From 9408f56f5cd75d32aef4a4a18250ed93e1e1b875 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 15:01:41 +0100
-Subject: [PATCH 08/15] src/fping.c: updated ip struct type
+Subject: [PATCH 08/16] src/fping.c: updated ip struct type
 
 ---
  src/fping.c | 14 +++++++-------

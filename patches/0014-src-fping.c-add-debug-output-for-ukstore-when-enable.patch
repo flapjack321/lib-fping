@@ -1,7 +1,7 @@
 From 975a3fedf538e1457e7df3b44f4b259a64891d82 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Wed, 30 Jun 2021 15:03:33 +0100
-Subject: [PATCH 14/15] src/fping.c: add debug output for ukstore when enabled
+Subject: [PATCH 14/16] src/fping.c: add debug output for ukstore when enabled
 
 ---
  src/fping.c | 33 +++++++++++++++++++++++++++++++++

@@ -1,7 +1,7 @@
 From b064cc41cb415debb98f50886dccd60593995ca2 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 14:20:59 +0100
-Subject: [PATCH 06/15] src/fping.c: renamed constants
+Subject: [PATCH 06/16] src/fping.c: renamed constants
 
 ---
  src/fping.c | 2 +-

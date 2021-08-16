@@ -1,7 +1,7 @@
 From 72ad1a23542d633134c93fea2a561d9d7cb66169 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 12:57:23 +0100
-Subject: [PATCH 03/15] src/socket4.c: updated icmp struct type
+Subject: [PATCH 03/16] src/socket4.c: updated icmp struct type
 
 ---
  src/socket4.c | 26 +++++++++++++-------------

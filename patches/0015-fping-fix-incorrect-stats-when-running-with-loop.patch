@@ -1,7 +1,7 @@
 From c2389b071b0a125f151330705a0646e18173ce7d Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <ethancotterell@gmail.com>
 Date: Thu, 29 Jul 2021 13:51:09 +0100
-Subject: [PATCH 15/15] fping: fix incorrect stats when running with `--loop`
+Subject: [PATCH 15/16] fping: fix incorrect stats when running with `--loop`
 
 ---
  src/fping.c | 9 ++++++++-

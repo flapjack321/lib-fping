@@ -1,7 +1,7 @@
 From 57b3ae21191cd621762e27b8073b4dc08a6a88b4 Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 3 May 2021 16:41:06 +0100
-Subject: [PATCH 11/15] src/fping.c: fixed incorrect ip header length
+Subject: [PATCH 11/16] src/fping.c: fixed incorrect ip header length
 
 ---
  src/fping.c | 2 +-

@@ -1,7 +1,7 @@
 From 7a99fde575d2292b807fade5b59af72be45f3b5e Mon Sep 17 00:00:00 2001
 From: Ethan Cotterell <e.cotterell@lancaster.ac.uk>
 Date: Mon, 26 Apr 2021 14:50:14 +0100
-Subject: [PATCH 07/15] src/fping.c: updated ICMP struct type
+Subject: [PATCH 07/16] src/fping.c: updated ICMP struct type
 
 ---
  src/fping.c | 28 ++++++++++++++--------------
